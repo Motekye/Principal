@@ -8,52 +8,52 @@ Principal generates the following HTML tags:
 \<p>, \<pre>, \<blockquote>, \<ul>, \<ol>, \<li>, \<dl>, \<dt>, \<dd>, \<h1...>, \<hr/>, \<br/>
 From simple text as defined in the following examples...
 
- - blocks where ALL of the lines
- - begin with a hyphen and a space
- - will automatically be converted 
- - to a <ul> unordered bullet list.
+    - blocks where ALL of the lines
+    - begin with a hyphen and a space
+    - will automatically be converted 
+    - to a <ul> unordered bullet list.
 
- 1. blocks where lines begin with 1.
- 2. 3. etc... or just 0. will create
- 0. a <ol> ordered list. Zero is 
- 0. used so you can re-arrange the
- 0. items without having to re-number.
- 17. The number is actually ignored.
+    1. blocks where lines begin with 1.
+    2. 3. etc... or just 0. will create
+    0. a <ol> ordered list. Zero is 
+    0. used so you can re-arrange the
+    0. items without having to re-number.
+    17. The number is actually ignored.
 
-- blocks with a mix of hyphens and
-No hyphens at the beginning of the line
-- Will create a <dl> definition list
-- with <dt> titles
-and <dd> description blocks.
+    - blocks with a mix of hyphens and
+    No hyphens at the beginning of the line
+    - Will create a <dl> definition list
+    - with <dt> titles
+    and <dd> description blocks.
 
->> blocks beginning with > create headers
+    >> blocks beginning with > create headers
+    
+    >>> header 3
+    
+    >>>> header 4, etc...
+    
+    <div class="left-frame"><p>
+    While blocks that begin with &lt; are 
+    added as ordinary HTML with no special 
+    rules applied.</p></div>
 
->>> header 3
+    "Open a block with a " character to
+    create a <blockquote>. The trailing
+    quote is not necessary and removed.
 
->>>> header 4, etc...
-
-<div class="left-frame"><p>
-While blocks that begin with &lt; are 
-added as ordinary HTML with no special 
-rules applied.</p></div>
-
-"Open a block with a " character to
-create a <blockquote>. The trailing
-quote is not necessary and removed.
-
- Blocks  that   open    with   a
-Space    create    preformatted 
-text    blocks   where   spaces 
-are     literal.     Bear    in
-mind   that  the   first  space
-is   removed.
-
-Blocks with no other discernable rule
-create an ordinary paragraph. Paragraphs
-can be on one line that wraps, or line 
-breaks inside the paragraph will create
-<br/> tags to break the line.
-
+     Blocks  that   open    with   a
+    Space    create    preformatted 
+    text    blocks   where   spaces 
+    are     literal.     Bear    in
+    mind   that  the   first  space
+    is   removed.
+    
+    Blocks with no other discernable rule
+    create an ordinary paragraph. Paragraphs
+    can be on one line that wraps, or line 
+    breaks inside the paragraph will create
+    <br/> tags to break the line.
+    
 ## Inline elements
 
 Principal generates the following HTML tags:
