@@ -5,20 +5,20 @@ This PHP script crawls through a text document and converts it to HTML based on 
 The document is divided into blocks separated by two new lines. Use of more than two lines between blocks will work, but may cause unexpected behavior. Also be mindful of a gap between blocks that has a space or tab in the middle line.
 
 Principal generates the following HTML tags:
-<p>, <pre>, <blockquote>, <ul>, <ol>, <li>, <dl>, <dt>, <dd>, <h1...>, <hr/>, <br/>
+\<p>, \<pre>, \<blockquote>, \<ul>, \<ol>, \<li>, \<dl>, \<dt>, \<dd>, \<h1...>, \<hr/>, \<br/>
 From simple text as defined in the following examples...
 
-- blocks where ALL of the lines
-- begin with a hyphen and a space
-- will automatically be converted 
-- to a <ul> unordered bullet list.
+ - blocks where ALL of the lines
+ - begin with a hyphen and a space
+ - will automatically be converted 
+ - to a <ul> unordered bullet list.
 
-1. blocks where lines begin with 1.
-2. 3. etc... or just 0. will create
-0. a <ol> ordered list. Zero is 
-0. used so you can re-arrange the
-0. items without having to re-number.
-17. The number is actually ignored.
+ 1. blocks where lines begin with 1.
+ 2. 3. etc... or just 0. will create
+ 0. a <ol> ordered list. Zero is 
+ 0. used so you can re-arrange the
+ 0. items without having to re-number.
+ 17. The number is actually ignored.
 
 - blocks with a mix of hyphens and
 No hyphens at the beginning of the line
