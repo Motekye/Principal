@@ -2,6 +2,19 @@
 
 This PHP script crawls through a text document and converts it to HTML based on rules. This script has existed on sites of mine in some form since ever, I wrote the first version in 2004.
 
+## Using Principal
+
+    include "path/to/principal.php";
+    $prince = new Principal();
+    $prince->std_config();
+    echo $prince->run(file_get_contents("path/to/file.txt"));
+
+Principal may be evoked through PHP using the **Principal** class. Then use the **run()** method, passing in the text content you wish to render.
+
+The **std_config()** method sets the default parameters for text rendering, and the contents of this method will be detailed at the end of this readme.
+
+## Block elements
+
 The document is divided into blocks separated by two new lines. Use of more than two lines between blocks will work, but may cause unexpected behavior. Also be mindful of a gap between blocks that has a space or tab in the middle line.
 
 Principal generates the following HTML tags:
@@ -92,4 +105,72 @@ Principal lets you apply *font styling* using the special characters:
 
 The special characters must be at the *start of the block* or immediately after whitespace, hyphen or a new line. The characters must be followed by an upper or lower case letter or a hyphen to open a tag, but the tag will end at the next matching character unconditionally. Also note that these tags do not nest, and images or links cannot be put inside these formatting tags as of this version.
 
+## Block attributes
+
+You can apply HTML attributes to your block using special characters on the line immediately before it...
+
+    .blue
+    This paragraph has the class "blue".
+    
+    #red
+    This paragraph has the id "red".
+ 
+    { color:#0F0; }
+    This paragraph is green from its style attribute.
+
+When defining your block, you should use the properties in the order: **.class#id{css:styles;}**, putting the *ID* or *styles* before the *class* will not work. Though the attribute line is ended by a newline, you may extend your styles in **{ }** brackets over multiple lines. You are not limited to CSS, either, the end of this chapter tells you how you can assign a PHP function for *CSS preprocessing*.
+
+## Creating \<div>s
+
+You can create \<div> elements using round brackets at the beginning of your block or after your attribute sequence. Apply attributes to these \<div>s and create *complex html structures* with only plain text...
+
+    { background-color:#CEB; 
+      margin:4em; 
+      padding-bottom:1em; 
+    }(
+     
+    - One thing.
+    - Two thing.
+    - Three thing.
+     
+    )
+    
+Will produce...
+
+    <div style="background-color:#CEB; margin:4em; padding-bottom:1em;">
+      <ul>
+        <li>One thing.</li>
+        <li>Two thing.</li>
+        <li>Three thing.</li>
+      </ul>
+    </div>
+
+Open and close multiple \<div>s in the same line as long as there is no other *text* and only *attribute line* information between them. Once Principal reaches the first characters of text, the attribute space is over.
+
+    .columns( .half( 
+    
+    First column...
+     
+    ) .half( 
+     
+    Second column...
+     
+    ) )
+
+Will produce...
+
+    <div class="columns">
+      <div class="half">
+        <p>First column...</p>
+      </div>      
+      <div class="half">
+        <p>Second column...</p>
+      </div>
+    </div>
+
+And inside those \<div>s, Principal will create all the normal paragraph and list elements it would otherwise. Note how the **)** closers need to be in a new block by themselves. End brackets only end \<div>s when they're part of the *attribute line* at the beginning of a block.
+
+It's important to note that these *attribute line* functions mean that your blocks cannot otherwise begin with any of the characters **( ) # {** or **.**
+
+## Using Principal to create \<table>s
 
