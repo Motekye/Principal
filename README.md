@@ -57,81 +57,39 @@ From simple text as defined in the following examples...
 ## Inline elements
 
 Principal generates the following HTML tags:
-<a>, <b>, <i>, <s>, <u>, <q>, <em>, <tt>, <strong>, <img>
+\<a>, \<b>, \<i>, \<s>, \<u>, \<q>, \<em>, \<tt>, \<strong>, \<img>
 While rendering text into any of these block tags:
-<p>, <blockquote>, <ul>, <ol>, <li>, <dl>, <dt>, <dd>, <h1...>
+\<p>, \<blockquote>, \<ul>, \<ol>, \<li>, \<dl>, \<dt>, \<dd>, \<h1...>
 But not for any other tags or plain HTML...
 
->> Creating links in your documents
+### Creating links in your documents
 
-You're going to want to link to other pages on your site and to external resources. If you're at all familiar with HTML, this involves the usage of: |<a href="url">text</a>|, but this shortcode vastly simplifies it.
+You're going to want to link to other pages on your site and to external resources. If you're at all familiar with HTML, this involves the usage of: \<a href="url">text\</a>, but this shortcode vastly simplifies it.
 
- http://website.com/page.htm (text)
-  
-www.another-website.com (text)
- 
-./local-page.htm (text)
- 
-.//top-level-page.htm (text)
+    http://website.com/page.htm (text)
+    
+    www.another-website.com (text)
+    
+    ./local-page.htm (text)
+    
+    .//top-level-page.htm (text)
 
-If the next non-space character after the link is not a ( then the URL will just be the text inside the link. Otherwise the text in the brackets becomes the link text. External pages recognize |http:// or www.| and automatically open in a new tab so users don't leave your website when they click on them. ^Note that local page URLs start with ./ using only / will not work!^ That will actually make /italic text./
+If the next non-space character after the link is not a ( then the URL will just be the text inside the link. Otherwise the text in the brackets becomes the link text. External pages recognize **http://** or **www.** and automatically open in a new tab so users don't leave your website when they click on them. Note that local page URLs start with **./** using only **/** will not work! That will actually make *italic text.*
 
-| Use this syntax to make links in paragraphs, lists and blockquotes. Doesn't apply inside <pre> elements or plain HTML blocks. Just put the URL followed by the text in (brackets). Easy as that!
+Use this syntax to make links in paragraphs, lists and blockquotes. Doesn't apply inside \<pre> elements or plain HTML blocks. Just put the URL followed by the text in (brackets). Easy as that!
 
->> Putting images ::ico/disk in documents
+### Putting images in documents
 
- >> Putting images ::ico/disk.gif in documents
+Principal provides an easy shortcut to insert images with **::** followed by the path of the image, whether it's a local image or a remote image with **::http://...** you may use this **::** shortcut inside any text block, or open a block with **::** to create an image outside any other tag.
 
-Principal provides an easy shortcut to insert images with |::| followed by the path of the image, whether it's a local image or a remote image with |::http://...|
-
->> Use shortcodes for font styling
+### Use shortcodes for font styling
 
 Principal lets you apply *font styling* using the special characters:
 
-*  bold      /  italic      ~  strike        _  underline  
- 
-"  quote     ^  emphasis    |  typewriter    =  strong
+    *  bold      /  italic      ~  strike        _  underline  
+    
+    "  quote     ^  emphasis    |  typewriter    =  strong
 
-The special characters must be at the |start of the block| or immediately after whitespace, hyphen or a new line. The characters must be followed by an upper or lower case letter or a hyphen to open a tag -- but the tag will end at the next matching character unconditionally.
+The special characters must be at the *start of the block* or immediately after whitespace, hyphen or a new line. The characters must be followed by an upper or lower case letter or a hyphen to open a tag, but the tag will end at the next matching character unconditionally. Also note that these tags do not nest, and images or links cannot be put inside these formatting tags as of this version.
 
->>> A Quick Rundown of Each Style...
 
-.left
-- Bold <b> with * 
-*Some bold text.*
-- Italic <i> with / 
-/Some italic text/
-- Struckout <s> text with ~ 
-~Some struckout text~
-- Underlined <u> text with _ 
-_Some underlined text_
-- Quotation <q> with " 
-"Some text in quotes"
-- Emphasized <em> text with ^ 
-^Some emphasized text^
-- Typewriter <tt> text with | 
-|Some typewriter text|
-- Strong <strong> text with = 
-=Some highlighted text=
-
-Each of the |eight styles| are their /own/ _HTML tag._ This site design and *any* ~should~ ^must^ trap the usage of *all* of these /basic/ HTML _text formatting elements._ Here's the =shortcode used= to produce /this paragraph/ here with all the "text formatting" in it.
-
- Each of the |eight styles| are 
-their /own/ _HTML tag._ This 
-site design and *any* ~should~ 
-^must^ trap the usage of *all* 
-of these /basic/ HTML _text 
-formatting elements._ Here's 
-the =shortcode used= to 
-produce /this paragraph/ here 
-with all the "text formatting" 
-in it.
-
-{CB;}
-Also, these codes are only processed in paragraphs, lists and blockquotes. <pre> elements like the panel above are not converted. Nor are plain HTML blocks. This paragraph is, however. Please note that block rules supercede inline rules. So you can't make the <q> tag at the start of a <blockquote>.
-
-| Next learn about putting /attributes/ on your blocks...
-
-----
-
-include: principal-index
